@@ -12,6 +12,11 @@
 	}
 </script>
 
-<style>
+<style lang="scss">
+	@import "uview-ui/index.scss";
 	/*每个页面公共css */
+	* {
+		box-sizing: border-box;
+	}
+	
 </style>

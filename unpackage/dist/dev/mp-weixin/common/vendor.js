@@ -11941,6 +11941,235 @@ uni.addInterceptor({
 });
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
+/***/ }),
+/* 63 */,
+/* 64 */,
+/* 65 */,
+/* 66 */,
+/* 67 */,
+/* 68 */,
+/* 69 */
+/*!************************************************************************************!*\
+  !*** /Users/juliettewang/Downloads/iCode/Vue/demo/wechat-scaffold/models/index.js ***!
+  \************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+var context = __webpack_require__(70);
+var apisList = context.keys().reduce(function (apis, key) {
+  var name = key.replace(/(^\.\/|\.js$)/g, '');
+  var api = context(key).default;
+  apis[name] = api;
+  return apis;
+}, {});
+var _default = _objectSpread({}, apisList);
+exports.default = _default;
+
+/***/ }),
+/* 70 */
+/*!**********************************************************************************************************************!*\
+  !*** /Users/juliettewang/Downloads/iCode/Vue/demo/wechat-scaffold/models sync nonrecursive ^\.\/(?!index)[^/]*\.js$ ***!
+  \**********************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var map = {
+	"./order.js": 71
+};
+
+
+function webpackContext(req) {
+	var id = webpackContextResolve(req);
+	return __webpack_require__(id);
+}
+function webpackContextResolve(req) {
+	if(!__webpack_require__.o(map, req)) {
+		var e = new Error("Cannot find module '" + req + "'");
+		e.code = 'MODULE_NOT_FOUND';
+		throw e;
+	}
+	return map[req];
+}
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = 70;
+
+/***/ }),
+/* 71 */
+/*!************************************************************************************!*\
+  !*** /Users/juliettewang/Downloads/iCode/Vue/demo/wechat-scaffold/models/order.js ***!
+  \************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _request = _interopRequireDefault(__webpack_require__(/*! @/utils/request.js */ 72));
+var BASE_URL = 'https://op.cn88555.com/api/node';
+/**
+  * @Description:格式化数据
+  * @param 请求参数
+  * @return 格式化参数
+  */
+var formatData = function formatData(_ref) {
+  var url = _ref.url,
+    method = _ref.method,
+    data = _ref.data;
+  return {
+    url: "".concat(BASE_URL).concat(url),
+    method: method,
+    data: data
+  };
+};
+var _default = {
+  // 查询
+  queryOrder: function queryOrder(params) {
+    return (0, _request.default)(formatData({
+      url: '/geo/getAddressTree',
+      method: 'POST',
+      data: params
+    }));
+  },
+  // 新增
+  addOrder: function addOrder(params) {
+    return (0, _request.default)(formatData({
+      url: '/geo/getAddressTree',
+      method: 'POST',
+      data: params
+    }));
+  },
+  // 查询品牌
+  queryBrand: function queryBrand(params) {
+    return (0, _request.default)(formatData({
+      url: '/geo/getAddressTree',
+      method: 'POST',
+      data: params
+    }));
+  },
+  // 查询流水号段
+  queryIndex: function queryIndex(params) {
+    return (0, _request.default)(formatData({
+      url: '/geo/getAddressTree',
+      method: 'POST',
+      data: params
+    }));
+  },
+  // 查询产品
+  queryProduce: function queryProduce(params) {
+    return (0, _request.default)(formatData({
+      url: '/geo/getAddressTree',
+      method: 'POST',
+      data: params
+    }));
+  },
+  // 查询批次
+  queryBatch: function queryBatch(params) {
+    return (0, _request.default)(formatData({
+      url: '/geo/getAddressTree',
+      method: 'POST',
+      data: params
+    }));
+  },
+  // 查询码量
+  queryCode: function queryCode(params) {
+    return (0, _request.default)(formatData({
+      url: '/geo/getAddressTree',
+      method: 'POST',
+      data: params
+    }));
+  }
+};
+exports.default = _default;
+
+/***/ }),
+/* 72 */
+/*!*************************************************************************************!*\
+  !*** /Users/juliettewang/Downloads/iCode/Vue/demo/wechat-scaffold/utils/request.js ***!
+  \*************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = _default;
+var http = function http(config) {
+  return new Promise(function (resolve, reject) {
+    var options = {
+      url: config.url,
+      method: config.method || 'GET',
+      data: config.data || {},
+      header: config.header || {},
+      success: function success(res) {
+        if (res.statusCode === 200) {
+          if (res.data.code === 200) {
+            resolve(res.data);
+          } else {
+            reject(res.data);
+          }
+        } else {
+          reject();
+        }
+      },
+      fail: function fail(err) {
+        reject(err);
+      }
+    };
+    uni.request(options);
+  });
+};
+function _default(config) {
+  return http(config).catch(function (err) {
+    if (err.statusCode === 404) {
+      uni.showToast({
+        title: "请求资源不存在",
+        icon: "none"
+      });
+    } else if (err.statusCode === 500) {
+      uni.showToast({
+        title: "服务器内部错误",
+        icon: "none"
+      });
+    } else {
+      if (err.msg) {
+        uni.showToast({
+          title: err.msg,
+          icon: "none"
+        });
+      } else {
+        uni.showToast({
+          title: "\u7F51\u7EDC\u8BF7\u6C42\u5931\u8D25".concat(err.errMsg ? '(' + err.errMsg + ')' : ''),
+          icon: "none"
+        });
+      }
+    }
+  });
+}
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
+
 /***/ })
 ]]);
 //# sourceMappingURL=../../.sourcemap/mp-weixin/common/vendor.js.map

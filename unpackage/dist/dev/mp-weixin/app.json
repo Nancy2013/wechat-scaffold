@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/main/portal",
     "pages/index/index"
   ],
   "subPackages": [],

@@ -11948,10 +11948,11 @@ uni.addInterceptor({
 /* 66 */,
 /* 67 */,
 /* 68 */,
-/* 69 */
-/*!************************************************************************************!*\
-  !*** /Users/juliettewang/Downloads/iCode/Vue/demo/wechat-scaffold/models/index.js ***!
-  \************************************************************************************/
+/* 69 */,
+/* 70 */
+/*!*************************************************************************************!*\
+  !*** /Users/juliettewang/Downloads/iCode/Vue/demo/wechat-scaffold/service/index.js ***!
+  \*************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11966,7 +11967,7 @@ exports.default = void 0;
 var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-var context = __webpack_require__(70);
+var context = __webpack_require__(71);
 var apisList = context.keys().reduce(function (apis, key) {
   var name = key.replace(/(^\.\/|\.js$)/g, '');
   var api = context(key).default;
@@ -11977,15 +11978,15 @@ var _default = _objectSpread({}, apisList);
 exports.default = _default;
 
 /***/ }),
-/* 70 */
-/*!**********************************************************************************************************************!*\
-  !*** /Users/juliettewang/Downloads/iCode/Vue/demo/wechat-scaffold/models sync nonrecursive ^\.\/(?!index)[^/]*\.js$ ***!
-  \**********************************************************************************************************************/
+/* 71 */
+/*!***********************************************************************************************************************!*\
+  !*** /Users/juliettewang/Downloads/iCode/Vue/demo/wechat-scaffold/service sync nonrecursive ^\.\/(?!index)[^/]*\.js$ ***!
+  \***********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./order.js": 71
+	"./order.js": 97
 };
 
 
@@ -12006,13 +12007,106 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 70;
+webpackContext.id = 71;
 
 /***/ }),
-/* 71 */
-/*!************************************************************************************!*\
-  !*** /Users/juliettewang/Downloads/iCode/Vue/demo/wechat-scaffold/models/order.js ***!
-  \************************************************************************************/
+/* 72 */
+/*!*************************************************************************************!*\
+  !*** /Users/juliettewang/Downloads/iCode/Vue/demo/wechat-scaffold/utils/request.js ***!
+  \*************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = _default;
+var http = function http(config) {
+  return new Promise(function (resolve, reject) {
+    var options = {
+      url: config.url,
+      method: config.method || 'GET',
+      data: config.data || {},
+      header: config.header || {},
+      success: function success(res) {
+        if (res.statusCode === 200) {
+          if (res.data.code === 200) {
+            resolve(res.data);
+          } else {
+            reject(res.data);
+          }
+        } else {
+          reject();
+        }
+      },
+      fail: function fail(err) {
+        reject(err);
+      }
+    };
+    uni.request(options);
+  });
+};
+function _default(config) {
+  return http(config).catch(function (err) {
+    if (err.statusCode === 404) {
+      uni.showToast({
+        title: "请求资源不存在",
+        icon: "none"
+      });
+    } else if (err.statusCode === 500) {
+      uni.showToast({
+        title: "服务器内部错误",
+        icon: "none"
+      });
+    } else {
+      if (err.msg) {
+        uni.showToast({
+          title: err.msg,
+          icon: "none"
+        });
+      } else {
+        uni.showToast({
+          title: "\u7F51\u7EDC\u8BF7\u6C42\u5931\u8D25".concat(err.errMsg ? '(' + err.errMsg + ')' : ''),
+          icon: "none"
+        });
+      }
+    }
+  });
+}
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
+
+/***/ }),
+/* 73 */,
+/* 74 */,
+/* 75 */,
+/* 76 */,
+/* 77 */,
+/* 78 */,
+/* 79 */,
+/* 80 */,
+/* 81 */,
+/* 82 */,
+/* 83 */,
+/* 84 */,
+/* 85 */,
+/* 86 */,
+/* 87 */,
+/* 88 */,
+/* 89 */,
+/* 90 */,
+/* 91 */,
+/* 92 */,
+/* 93 */,
+/* 94 */,
+/* 95 */,
+/* 96 */,
+/* 97 */
+/*!*************************************************************************************!*\
+  !*** /Users/juliettewang/Downloads/iCode/Vue/demo/wechat-scaffold/service/order.js ***!
+  \*************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -12100,75 +12194,6 @@ var _default = {
   }
 };
 exports.default = _default;
-
-/***/ }),
-/* 72 */
-/*!*************************************************************************************!*\
-  !*** /Users/juliettewang/Downloads/iCode/Vue/demo/wechat-scaffold/utils/request.js ***!
-  \*************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = _default;
-var http = function http(config) {
-  return new Promise(function (resolve, reject) {
-    var options = {
-      url: config.url,
-      method: config.method || 'GET',
-      data: config.data || {},
-      header: config.header || {},
-      success: function success(res) {
-        if (res.statusCode === 200) {
-          if (res.data.code === 200) {
-            resolve(res.data);
-          } else {
-            reject(res.data);
-          }
-        } else {
-          reject();
-        }
-      },
-      fail: function fail(err) {
-        reject(err);
-      }
-    };
-    uni.request(options);
-  });
-};
-function _default(config) {
-  return http(config).catch(function (err) {
-    if (err.statusCode === 404) {
-      uni.showToast({
-        title: "请求资源不存在",
-        icon: "none"
-      });
-    } else if (err.statusCode === 500) {
-      uni.showToast({
-        title: "服务器内部错误",
-        icon: "none"
-      });
-    } else {
-      if (err.msg) {
-        uni.showToast({
-          title: err.msg,
-          icon: "none"
-        });
-      } else {
-        uni.showToast({
-          title: "\u7F51\u7EDC\u8BF7\u6C42\u5931\u8D25".concat(err.errMsg ? '(' + err.errMsg + ')' : ''),
-          icon: "none"
-        });
-      }
-    }
-  });
-}
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ })
 ]]);

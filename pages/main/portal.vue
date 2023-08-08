@@ -5,7 +5,7 @@
 </template>
 
 <script>
-	import service from '@/models/index.js';
+	import service from '@/service/index.js';
 	export default {
 		name: 'mine',
 		components: {},

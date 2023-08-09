@@ -1,10 +1,10 @@
 <template>
 	<view class="fc-list">
-		<view class="list-panel" v-if="count===0">
+		<view class="list-panel" v-if="count>0">
 			<slot></slot>
 		</view>
-		<view class="empty">
-			暂无数据
+		<view class="empty" v-else>
+			<fc-empty></fc-empty>
 		</view>
 		<view class="loadmore" v-if='loaded'>
 			<u-loadmore :status="status" />

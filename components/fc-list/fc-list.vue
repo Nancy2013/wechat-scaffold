@@ -1,55 +1,63 @@
 <template>
 	<view class="fc-list">
-		<view class="list" v-if="count">
+		<view class="list-panel" v-if="count===0">
 			<slot></slot>
 		</view>
-		<view class="" v-else>
-			<p>暂无记录</p>
+		<view class="empty">
+			暂无数据
 		</view>
-		<view v-if="isLoadMore">{{loadMoreText}}</view>
+		<view class="loadmore" v-if='loaded'>
+			<u-loadmore :status="status" />
+		</view>
 	</view>
 </template>
 
 <script>
 	export default {
 		name: 'fc-list',
-		props:{
-			count:{
-				type:Number,
-				default:0,
+		props: {
+			count: { // 数据总数
+				type: Number,
+				default: 0
 			},
-			page:{
-				type:Number,
-				default:1,
+			page: {
+				type: Number,
+				default: 0
 			},
-			limit:{
-				type:Number,
-				default:1,
+			limit: {
+				type: Number,
+				default: 0
 			},
-			loader:{
-				type:Boolean,
-				default:true,
+			loaded: {
+				type: Boolean,
+				default: false
 			},
 		},
 		components: {},
 		data() {
-			return {}
+			return {
+				status: 'loading', //加载样式：more-加载前样式，loading-加载中样式，nomore-没有数据样式
+			}
 		},
 		computed: {},
-		watch:{},
 		mounted() {},
 		methods: {},
 		onReachBottom(){
-			console.log('------onReachBottom----');
-			if(!this.isLoadMore){  //此处判断，上锁，防止重复请求
-			     this.isLoadMore=true
-			     this.$emit('onReachBottom')
+			console.log('------onReachBottom----list---')
+			const {page,limit,count}=this;
+			if (page*limit >= count) {
+				this.status = "noMore"
+				return;
+			} else {
+				this.status = "loading"
+				this.$emit('onReachBottom')
 			}
 		},
-		
 	}
 </script>
 
 <style lang="scss" scoped>
-	.fc-list{}
+	.list{
+		.loadmore{}
+	}
 </style>

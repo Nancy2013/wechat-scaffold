@@ -1,6 +1,6 @@
 import request from'@/utils/request.js'
 
-const BASE_URL='https://op.cn88555.com/api/node';
+const BASE_URL='https://op.cn88555.com/api/node';  // https://op.cn88555.com/api/node
 /**
   * @Description:格式化数据
   * @param 请求参数

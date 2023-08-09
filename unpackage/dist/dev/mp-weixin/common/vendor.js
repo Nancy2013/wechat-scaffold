@@ -11948,8 +11948,7 @@ uni.addInterceptor({
 /* 66 */,
 /* 67 */,
 /* 68 */,
-/* 69 */,
-/* 70 */
+/* 69 */
 /*!*************************************************************************************!*\
   !*** /Users/juliettewang/Downloads/iCode/Vue/demo/wechat-scaffold/service/index.js ***!
   \*************************************************************************************/
@@ -11967,7 +11966,7 @@ exports.default = void 0;
 var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-var context = __webpack_require__(71);
+var context = __webpack_require__(70);
 var apisList = context.keys().reduce(function (apis, key) {
   var name = key.replace(/(^\.\/|\.js$)/g, '');
   var api = context(key).default;
@@ -11978,7 +11977,7 @@ var _default = _objectSpread({}, apisList);
 exports.default = _default;
 
 /***/ }),
-/* 71 */
+/* 70 */
 /*!***********************************************************************************************************************!*\
   !*** /Users/juliettewang/Downloads/iCode/Vue/demo/wechat-scaffold/service sync nonrecursive ^\.\/(?!index)[^/]*\.js$ ***!
   \***********************************************************************************************************************/
@@ -11986,7 +11985,7 @@ exports.default = _default;
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./order.js": 97
+	"./order.js": 71
 };
 
 
@@ -12007,103 +12006,10 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 71;
+webpackContext.id = 70;
 
 /***/ }),
-/* 72 */
-/*!*************************************************************************************!*\
-  !*** /Users/juliettewang/Downloads/iCode/Vue/demo/wechat-scaffold/utils/request.js ***!
-  \*************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = _default;
-var http = function http(config) {
-  return new Promise(function (resolve, reject) {
-    var options = {
-      url: config.url,
-      method: config.method || 'GET',
-      data: config.data || {},
-      header: config.header || {},
-      success: function success(res) {
-        if (res.statusCode === 200) {
-          if (res.data.code === 200) {
-            resolve(res.data);
-          } else {
-            reject(res.data);
-          }
-        } else {
-          reject();
-        }
-      },
-      fail: function fail(err) {
-        reject(err);
-      }
-    };
-    uni.request(options);
-  });
-};
-function _default(config) {
-  return http(config).catch(function (err) {
-    if (err.statusCode === 404) {
-      uni.showToast({
-        title: "请求资源不存在",
-        icon: "none"
-      });
-    } else if (err.statusCode === 500) {
-      uni.showToast({
-        title: "服务器内部错误",
-        icon: "none"
-      });
-    } else {
-      if (err.msg) {
-        uni.showToast({
-          title: err.msg,
-          icon: "none"
-        });
-      } else {
-        uni.showToast({
-          title: "\u7F51\u7EDC\u8BF7\u6C42\u5931\u8D25".concat(err.errMsg ? '(' + err.errMsg + ')' : ''),
-          icon: "none"
-        });
-      }
-    }
-  });
-}
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
-
-/***/ }),
-/* 73 */,
-/* 74 */,
-/* 75 */,
-/* 76 */,
-/* 77 */,
-/* 78 */,
-/* 79 */,
-/* 80 */,
-/* 81 */,
-/* 82 */,
-/* 83 */,
-/* 84 */,
-/* 85 */,
-/* 86 */,
-/* 87 */,
-/* 88 */,
-/* 89 */,
-/* 90 */,
-/* 91 */,
-/* 92 */,
-/* 93 */,
-/* 94 */,
-/* 95 */,
-/* 96 */,
-/* 97 */
+/* 71 */
 /*!*************************************************************************************!*\
   !*** /Users/juliettewang/Downloads/iCode/Vue/demo/wechat-scaffold/service/order.js ***!
   \*************************************************************************************/
@@ -12119,7 +12025,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 var _request = _interopRequireDefault(__webpack_require__(/*! @/utils/request.js */ 72));
-var BASE_URL = 'https://op.cn88555.com/api/node';
+var BASE_URL = 'https://op.cn88555.com/api/node'; // https://op.cn88555.com/api/node
 /**
   * @Description:格式化数据
   * @param 请求参数
@@ -12194,6 +12100,220 @@ var _default = {
   }
 };
 exports.default = _default;
+
+/***/ }),
+/* 72 */
+/*!*************************************************************************************!*\
+  !*** /Users/juliettewang/Downloads/iCode/Vue/demo/wechat-scaffold/utils/request.js ***!
+  \*************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = _default;
+var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+var http = function http(config) {
+  var header = {
+    Authorization: '24dbcfc8-9be9-469d-b99f-cd3001935b50'
+  };
+  return new Promise(function (resolve, reject) {
+    var options = {
+      url: config.url,
+      method: config.method || 'GET',
+      data: config.data || {},
+      header: _objectSpread(_objectSpread({}, header), config.header) || header,
+      success: function success(res) {
+        if (res.statusCode === 200) {
+          if (res.data.code === 200) {
+            resolve(res.data);
+          } else {
+            reject(res.data);
+          }
+        } else {
+          reject();
+        }
+      },
+      fail: function fail(err) {
+        reject(err);
+      }
+    };
+    uni.request(options);
+  });
+};
+function _default(config) {
+  return http(config).catch(function (err) {
+    if (err.statusCode === 404) {
+      uni.showToast({
+        title: "请求资源不存在",
+        icon: "none"
+      });
+    } else if (err.statusCode === 500) {
+      uni.showToast({
+        title: "服务器内部错误",
+        icon: "none"
+      });
+    } else {
+      if (err.msg) {
+        uni.showToast({
+          title: err.msg,
+          icon: "none"
+        });
+      } else {
+        uni.showToast({
+          title: "\u7F51\u7EDC\u8BF7\u6C42\u5931\u8D25".concat(err.errMsg ? '(' + err.errMsg + ')' : ''),
+          icon: "none"
+        });
+      }
+    }
+  });
+}
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
+
+/***/ }),
+/* 73 */,
+/* 74 */,
+/* 75 */,
+/* 76 */,
+/* 77 */,
+/* 78 */,
+/* 79 */,
+/* 80 */,
+/* 81 */,
+/* 82 */,
+/* 83 */,
+/* 84 */,
+/* 85 */,
+/* 86 */,
+/* 87 */,
+/* 88 */
+/*!************************************************************************************!*\
+  !*** /Users/juliettewang/Downloads/iCode/Vue/demo/wechat-scaffold/utils/common.js ***!
+  \************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.debounce = debounce;
+exports.throttleFnc = exports.isEmpty = exports.getLinkQuery = void 0;
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+/**
+ * @author sudong.duan
+ * Date: 21-12-16
+ * desc: 公共方法
+ */
+
+/**
+ *判断是否为空
+ *@param {String}a 变量
+ *@return 是否为空
+ */
+var isEmpty = function isEmpty(a) {
+  if (a === undefined || a === 'undefined' || a === null || a === 'null' || a === '' || JSON.stringify(a) === '{}' || JSON.stringify(a) === '[]') {
+    return true;
+  }
+  return false;
+};
+
+/**
+ 节流函数
+ @param {Function} callback 回调函数
+ @return
+ */
+exports.isEmpty = isEmpty;
+var throttleFnc = function throttleFnc(callback) {
+  var isLimit = false;
+  return function () {
+    if (!isLimit) {
+      isLimit = true;
+      callback.call.apply(callback, [this, function () {
+        isLimit = false;
+      }].concat(Array.prototype.slice.call(arguments)));
+    }
+  };
+};
+
+/**
+ * @desc 函数防抖
+ * @param func 目标函数
+ * @param wait 延迟执行毫秒数
+ * @param immediate true - 立即执行， false - 延迟执行
+ @return
+ */
+exports.throttleFnc = throttleFnc;
+function debounce(func, wait, immediate) {
+  var timer;
+  return function () {
+    var context = this,
+      args = arguments;
+    if (timer) clearTimeout(timer);
+    if (immediate) {
+      var callNow = !timer;
+      timer = setTimeout(function () {
+        timer = null;
+      }, wait);
+      if (callNow) func.apply(context, args);
+    } else {
+      timer = setTimeout(function () {
+        func.apply(context, args);
+      }, wait);
+    }
+  };
+}
+
+/**
+	获取链接参数
+	@param {String} link 链接
+	@return {String} 链接后参数数据
+*/
+var getLinkQuery = function getLinkQuery(link) {
+  var queryString = link.split('?')[1];
+  if (queryString) {
+    var queryData = {};
+    queryString = queryString.split('&');
+    var _iterator = _createForOfIteratorHelper(queryString),
+      _step;
+    try {
+      for (_iterator.s(); !(_step = _iterator.n()).done;) {
+        var item = _step.value;
+        item = item.split('=');
+        queryData[item[0]] = item[1];
+      }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
+    }
+    return queryData;
+  } else {
+    return {};
+  }
+};
+exports.getLinkQuery = getLinkQuery;
+
+/***/ }),
+/* 89 */
+/*!************************************************************************************************************!*\
+  !*** /Users/juliettewang/Downloads/iCode/Vue/demo/wechat-scaffold/components/images/fc-tabs/tabs-icon.png ***!
+  \************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAALCAMAAAAz85+9AAAAZlBMVEUAAAC1lV64lV+1lV62lV+2ll+AgEC2lF61lF+1lV+2lV62lV+2lV62lV+2lV+3lV62lV+2ll63kV21lWCyjVukiVu2lF62lV62lV62lV62k161k162lF62lF+1lV+2ll22l1+2lV8VPbgcAAAAIXRSTlMA60xu95EE++/PiYJ6yZ5fWiYdGBIJ48O5sUMu26ejPzu6/dHMAAAAmklEQVQY04XO1xKDIBCFYVjAAlhiL2nn/V8yQcxMdFD/K2A+dpYR5yW7zjliHMCjvqKRjQG+YCSiPbW3DHCYJFydqY9pHjsi6XtMsSSHogktQONCwSd3bUUCX9xr2nyoy5zDN1brW6M99xOyp7ZCCKuGDr/utFI/PcVxaRGxbbMJ+yR/s1BVqTL5D2WvXxE7qZoKa5RSRtC8gx9TxBUnQqzJXQAAAABJRU5ErkJggg=="
 
 /***/ })
 ]]);

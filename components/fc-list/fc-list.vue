@@ -2,12 +2,12 @@
 	<view class="fc-list">
 		<view class="list-panel" v-if="count>0">
 			<slot></slot>
+			<view class="loadmore" v-if='loaded'>
+				<u-loadmore :status="status" />
+			</view>
 		</view>
 		<view class="empty" v-else>
 			<fc-empty></fc-empty>
-		</view>
-		<view class="loadmore" v-if='loaded'>
-			<u-loadmore :status="status" />
 		</view>
 	</view>
 </template>

@@ -2,6 +2,9 @@
 	<view class="addPage">
 		<view class="addOrder-wrap">
 			<fc-form ref="formRef" :renderList="renderFormList" :formData="formData" @change="handleChange"></fc-form>
+			<view class="addOrder-submit">
+				<button type="default" @click="handleSubmit">提交</button>
+			</view>
 		</view>
 	</view>
 </template>
@@ -9,8 +12,8 @@
 <script>
 	import service from '@/service/index.js';
 	import {
-			getAddOrderFormRenderList
-		} from './config.js'
+		getAddOrderFormRenderList
+	} from './config.js'
 	export default {
 		name: 'mine',
 		components: {},
@@ -43,6 +46,11 @@
 				console.log(formData)
 				this.formData = formData
 			},
+			handleSubmit() {
+				this.$refs.formRef.validate().then(data=>{
+					
+				});
+			}
 		}
 	}
 </script>

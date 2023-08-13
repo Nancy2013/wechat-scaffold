@@ -85,28 +85,21 @@
 				return {};
 			},
 			defaultValue(){
-				// TODO优化
 				const defaultValue=[];
 				const {options,childName}=this;
 				if(this.value){
 					const {province,city,district}=this.value;
-					if(province){
-						const provinceIndex=options.findIndex(item=>item.id===province.code);
-						if(provinceIndex>=0){
-							defaultValue.push(provinceIndex);
-							const province=options[provinceIndex];
-							const cities=province[`${childName}`];
-							const cityIndex=cities&&cities.findIndex(item=>item.id===city.code);
-							if(cityIndex>=0){
-								defaultValue.push(cityIndex);
-								const city=cities[cityIndex];
-								const districtIndex=city[`${childName}`]&&city[`${childName}`].findIndex(item=>item.id===city.code);
-								if(districtIndex){
-									defaultValue.push(cityIndex);
-								}
-							}
+					const initValue=[province,city,district].filter(item=>item);
+					let baseArr=options;
+					initValue.forEach((item,$index)=>{
+						if($index>=1){
+							baseArr=baseArr[defaultValue[$index-1]][`${childName}`];
 						}
-					};
+						const index=this.getIndex(item.code,baseArr);
+						if(index>=0){
+							defaultValue.push(index);
+						}
+					})
 					console.log('------defaultValue------',defaultValue);
 					return defaultValue;
 				}
@@ -130,6 +123,16 @@
 		},
 		
 		methods: {
+			getIndex(value,arr){
+				if(Array.isArray(arr)){
+					const index=arr.findIndex(item=>item.id===value);
+					if(index>=0){
+						return index;
+					}
+					return null
+				}
+				return null
+			},
 			/**
 			    处理详细地址改变事件
 			    @param { String } value 地址输入的值

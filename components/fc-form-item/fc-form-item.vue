@@ -82,6 +82,7 @@
 			    @return
 			*/
 			handleChange(event) {
+				console.log('----handleChange-------fc-form-item------',event);
 				this.$emit('change', event)
 			},
 

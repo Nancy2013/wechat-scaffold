@@ -14,7 +14,7 @@
 				type: String
 			},
 			inputType: {
-				type: String,   // 'text' | 'number',
+				type: String,   // 'text' | 'number' | ‘digit’
 				default: 'text'
 			},
 			maxlength: {
@@ -49,11 +49,12 @@
 				if (this.inputType === 'number') {
 					value = filterNum(value)
 				}
-				if (this.inputType === 'float') {
+				if (this.inputType === 'digit') {
 				    value = filterFloat(value, this.decimalLen)
-					console.log('-------handleInput------',this.inputType,value);
 				}
-				this.innerValue=value;
+				this.$nextTick(()=>{
+					this.innerValue=value;
+				})
 				this.$emit('change', value)
 			},
 			/**

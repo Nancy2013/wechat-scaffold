@@ -1,57 +1,47 @@
 <template>
-	<view class="portal">
-		<!-- <view class="">
-			<view class="">
-				fc-input
-			</view>
-			<fc-input :value="value" inputType='digit' @change='handleChange'></fc-input>
-		</view> -->
-		
-		<view class="">
-			<view class="">
-				fc-form-item input
-			</view>
-			<fc-form-item type='input' :value="value" :propsData='propsData' @change='handleChange'></fc-form-item>
+	<view class="addPage">
+		<view class="addOrder-wrap">
+			<fc-form ref="formRef" :renderList="renderFormList" :formData="formData" @change="handleChange"></fc-form>
 		</view>
-		
-		<!-- <view class="">
-			<view class="">
-				fc-form-item textarea
-			</view>
-			<fc-form-item type='textarea' :value="value"></fc-form-item>
-		</view> -->
 	</view>
 </template>
 
 <script>
 	import service from '@/service/index.js';
+	import {
+			getAddOrderFormRenderList
+		} from './config.js'
 	export default {
 		name: 'mine',
 		components: {},
 		data() {
 			return {
-				value:'',
-				propsData:{
-					inputType:'digit',
-					decimalLen:2,
+				renderFormList: getAddOrderFormRenderList(),
+				formData: {
+					payType: 1, // 线下支付
+					orderType: 2,
+					goodsPrice: 0,
+					goodsQuantity: '',
+					numOfPlant: '',
+					payAmount: '',
+					receiveName: '',
+					receivePhone: '',
 				},
 			}
 		},
 		computed: {},
-		watch: {
-			search: {
-				handler: function(newVal, oldVal) {
-					this.query();
-				},
-				deep: true,
-			}
-		},
+		watch: {},
 		mounted() {},
 		onLoad() {},
 		methods: {
-			handleChange(value){
-				console.log('------handleChange--portal---',value);
-				this.value=value;
+			/**
+			处理表单改变事件
+			@param 
+			@return
+			*/
+			handleChange(formData) {
+				console.log(formData)
+				this.formData = formData
 			},
 		}
 	}

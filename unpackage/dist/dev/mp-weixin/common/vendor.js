@@ -12194,6 +12194,146 @@ function _default(config) {
 /* 86 */,
 /* 87 */,
 /* 88 */
+/*!*************************************************************************************!*\
+  !*** /Users/juliettewang/Downloads/iCode/Vue/demo/wechat-scaffold/utils/filters.js ***!
+  \*************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.filterWeight = exports.filterNum_str = exports.filterNum = exports.filterName = exports.filterKilobitSplit = exports.filterFloat = exports.filterDefault = void 0;
+/**
+   文件描述：过滤工具类
+   创建人：段素栋
+   创建时间：2021-03-18
+ */
+
+/**
+    过滤字符前面的0
+    @param {String} val 待过滤的字符串
+    @return {String} 过滤后的字符串
+*/
+var filterPre0 = function filterPre0(val) {
+  var valList = val.split('.');
+  valList[0] = valList[0].replace(/\b(0+)/gi, "");
+  return valList.join('.');
+};
+
+/**
+    过滤姓名
+    @param {String} name 待过滤的字符串
+    @return {String} 过滤后的字符串
+*/
+var filterName = function filterName(name) {
+  return name.replace(/[^A-Za-z0-9\u4e00-\u9fa5\·\•]/g, '');
+};
+
+/**
+   过滤重量
+   @param {String} weight 待过滤的字符串
+   @return {String} 过滤后的字符串
+*/
+exports.filterName = filterName;
+var filterWeight = function filterWeight(weight) {
+  weight = weight.replace(/[^\d\.]/g, ''); //过滤非数字和.
+  weight = weight.replace(".", "$#$").replace(/\./g, "").replace("$#$", "."); //去除多余的.
+  var regStr = '^(\\-)*(\\d+)\\.(\\d).*$';
+  var decimalReg = new RegExp(regStr);
+  weight = weight.replace(decimalReg, '$1$2.$3');
+  if (weight.substring(0, 2) == '00') {
+    weight = '0';
+  } else if (weight.substring(0, 2) != '0.' && weight.substring(0, 2) != '0') {
+    weight = filterPre0(weight); //weight.replace(/\b(0+)/gi, "")
+  }
+
+  return weight;
+};
+
+/**
+   过滤数字
+   @param {String} num 待过滤的数字
+   @return {Number} 过滤后的数字
+*/
+exports.filterWeight = filterWeight;
+var filterNum = function filterNum(num) {
+  num = num.replace(/[^\d]/g, ''); //过滤非数字
+  return num === '' ? '' : Number(num);
+};
+
+/**
+   过滤浮点数
+   @param {String} num 待过滤的数字
+   @param {Number} decimalLen 过滤的小数位
+   @return {Number} 过滤后的数字
+*/
+exports.filterNum = filterNum;
+var filterFloat = function filterFloat(str) {
+  var decimalLen = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2;
+  var result = str.toString().replace(/[^\d\.]/g, ''); //过滤非数字和.
+  result = result.replace(".", "$#$").replace(/\./g, "").replace("$#$", "."); //去除多余的.
+  var regStr = '^(\\-)*(\\d+)\\.(';
+  for (var i = 0; i < decimalLen; i++) {
+    regStr += '\\d';
+  }
+  regStr += ').*$';
+  var decimalReg = new RegExp(regStr);
+  return result.replace(decimalReg, '$1$2.$3'); //小数点后最多decimalLen位
+};
+
+/**
+   过滤字符串数字
+   @param {String} str 待过滤的数字
+   @return {String} 过滤后的数字
+*/
+exports.filterFloat = filterFloat;
+var filterNum_str = function filterNum_str(str) {
+  return str.replace(/[^\d]/g, '');
+};
+
+/**
+   过滤默认字符 空格及emoji表情
+   @param {String} str 待过滤的字符串
+   @return {String} 过滤后的字符串
+*/
+exports.filterNum_str = filterNum_str;
+var filterDefault = function filterDefault(str) {
+  return str.replace(/ /g, '').replace(/(\ud83c[\udc00-\udfff])|(\ud83d[\udc00-\udfff])|(\ud83e[\udc00-\udfff])|[\u2100-\u32ff]|[\u0030-\u007f][\u20d0-\u20ff]|[\u0080-\u00ff]/g, '');
+};
+
+/**
+   过滤千位分割数字
+   @param {String} param 待过滤的数字
+   @return {String} 过滤后的数字
+*/
+exports.filterDefault = filterDefault;
+var filterKilobitSplit = function filterKilobitSplit(param) {
+  var num = param + '';
+  var numGroup = num.includes('.') ? num.split('.') : [num];
+  var intFn = function intFn(numStr) {
+    return numStr.split('').reverse().reduce(function (prev, next, index) {
+      return (index % 3 ? next : next + ',') + prev;
+    });
+  };
+  var intNum = intFn(numGroup[0]);
+  var floatNum = numGroup[1] ? '.' + numGroup[1] : '';
+  return intNum + floatNum;
+};
+exports.filterKilobitSplit = filterKilobitSplit;
+
+/***/ }),
+/* 89 */,
+/* 90 */,
+/* 91 */,
+/* 92 */,
+/* 93 */,
+/* 94 */,
+/* 95 */,
+/* 96 */
 /*!************************************************************************************!*\
   !*** /Users/juliettewang/Downloads/iCode/Vue/demo/wechat-scaffold/utils/common.js ***!
   \************************************************************************************/
@@ -12306,14 +12446,31 @@ var getLinkQuery = function getLinkQuery(link) {
 exports.getLinkQuery = getLinkQuery;
 
 /***/ }),
-/* 89 */
-/*!************************************************************************************************************!*\
-  !*** /Users/juliettewang/Downloads/iCode/Vue/demo/wechat-scaffold/components/images/fc-tabs/tabs-icon.png ***!
-  \************************************************************************************************************/
+/* 97 */,
+/* 98 */,
+/* 99 */,
+/* 100 */,
+/* 101 */,
+/* 102 */,
+/* 103 */,
+/* 104 */
+/*!**********************************************************************************************************!*\
+  !*** /Users/juliettewang/Downloads/iCode/Vue/demo/wechat-scaffold/components/images/fc-select/right.png ***!
+  \**********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAALCAMAAAAz85+9AAAAZlBMVEUAAAC1lV64lV+1lV62lV+2ll+AgEC2lF61lF+1lV+2lV62lV+2lV62lV+2lV+3lV62lV+2ll63kV21lWCyjVukiVu2lF62lV62lV62lV62k161k162lF62lF+1lV+2ll22l1+2lV8VPbgcAAAAIXRSTlMA60xu95EE++/PiYJ6yZ5fWiYdGBIJ48O5sUMu26ejPzu6/dHMAAAAmklEQVQY04XO1xKDIBCFYVjAAlhiL2nn/V8yQcxMdFD/K2A+dpYR5yW7zjliHMCjvqKRjQG+YCSiPbW3DHCYJFydqY9pHjsi6XtMsSSHogktQONCwSd3bUUCX9xr2nyoy5zDN1brW6M99xOyp7ZCCKuGDr/utFI/PcVxaRGxbbMJ+yR/s1BVqTL5D2WvXxE7qZoKa5RSRtC8gx9TxBUnQqzJXQAAAABJRU5ErkJggg=="
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAVCAMAAACqsJS4AAAAYFBMVEUAAADGxsbT09PFxcXGxsbGxsbGxsbGxsbGxsbExMTGxsbGxsbGxsbFxcXFxcXFxcXExMTGxsbGxsbJycnGxsbJycnOzs7GxsbGxsbFxcXDw8PFxcXDw8PPz8/MzMzFxcVqsNVnAAAAH3RSTlMA8Qf49QXnsKeROyn6npiHfkQzIRgVDd7VonduZhAPqN4hqAAAAG5JREFUGNNVz0kOgzAUA9CQMgTCDG2Zff9b4gWJhVf/SV+WbIxtDqM41Ls01MAmVh+gF0eyEz1ZZpET2YpzAqw28psD7s1CVSWQRvTEENARld6QjM+dtYQPaIjpgXXEHFAA+RkKiP+leenyM4oXbkbtB2BajijJAAAAAElFTkSuQmCC"
+
+/***/ }),
+/* 105 */
+/*!*********************************************************************************************************!*\
+  !*** /Users/juliettewang/Downloads/iCode/Vue/demo/wechat-scaffold/components/images/fc-select/down.png ***!
+  \*********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAXCAMAAAA8w5+RAAAAQlBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACO4fbyAAAAFnRSTlMA2QXUyzbAqJdxFbOGgVhKMiUbDbew+tdJYAAAAGpJREFUGNPNjVcOgDAMQ5s2ZXQPuP9VIR2KBN9IvJ8ktmKLP6LxlHxJi5qmB8eiA9/NA+LUItjxlhWavhVUefoB1ubLFQInbbDT2GETTF3U3anVYlhrdzXkMP2TMpjRQW0PDGIRL1ISX3IB+mgCPFB1dFMAAAAASUVORK5CYII="
 
 /***/ })
 ]]);

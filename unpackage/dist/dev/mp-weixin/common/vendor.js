@@ -11919,36 +11919,13 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 62 */
-/*!*********************************************************************************************!*\
-  !*** /Users/juliettewang/Downloads/iCode/Vue/demo/wechat-scaffold/uni.promisify.adaptor.js ***!
-  \*********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(uni) {var _typeof = __webpack_require__(/*! @babel/runtime/helpers/typeof */ 13);
-uni.addInterceptor({
-  returnValue: function returnValue(res) {
-    if (!(!!res && (_typeof(res) === "object" || typeof res === "function") && typeof res.then === "function")) {
-      return res;
-    }
-    return new Promise(function (resolve, reject) {
-      res.then(function (res) {
-        return res[0] ? reject(res[0]) : resolve(res[1]);
-      });
-    });
-  }
-});
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
-
-/***/ }),
+/* 62 */,
 /* 63 */,
 /* 64 */,
 /* 65 */,
 /* 66 */,
 /* 67 */,
-/* 68 */,
-/* 69 */
+/* 68 */
 /*!*************************************************************************************!*\
   !*** /Users/juliettewang/Downloads/iCode/Vue/demo/wechat-scaffold/service/index.js ***!
   \*************************************************************************************/
@@ -11966,7 +11943,7 @@ exports.default = void 0;
 var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-var context = __webpack_require__(70);
+var context = __webpack_require__(69);
 var apisList = context.keys().reduce(function (apis, key) {
   var name = key.replace(/(^\.\/|\.js$)/g, '');
   var api = context(key).default;
@@ -11977,7 +11954,7 @@ var _default = _objectSpread({}, apisList);
 exports.default = _default;
 
 /***/ }),
-/* 70 */
+/* 69 */
 /*!***********************************************************************************************************************!*\
   !*** /Users/juliettewang/Downloads/iCode/Vue/demo/wechat-scaffold/service sync nonrecursive ^\.\/(?!index)[^/]*\.js$ ***!
   \***********************************************************************************************************************/
@@ -11985,7 +11962,7 @@ exports.default = _default;
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./order.js": 71
+	"./order.js": 70
 };
 
 
@@ -12006,10 +11983,10 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 70;
+webpackContext.id = 69;
 
 /***/ }),
-/* 71 */
+/* 70 */
 /*!*************************************************************************************!*\
   !*** /Users/juliettewang/Downloads/iCode/Vue/demo/wechat-scaffold/service/order.js ***!
   \*************************************************************************************/
@@ -12024,7 +12001,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _request = _interopRequireDefault(__webpack_require__(/*! @/utils/request.js */ 72));
+var _request = _interopRequireDefault(__webpack_require__(/*! @/utils/request.js */ 71));
 var BASE_URL = 'https://op.cn88555.com/api/node'; // https://op.cn88555.com/api/node
 /**
   * @Description:格式化数据
@@ -12102,7 +12079,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 72 */
+/* 71 */
 /*!*************************************************************************************!*\
   !*** /Users/juliettewang/Downloads/iCode/Vue/demo/wechat-scaffold/utils/request.js ***!
   \*************************************************************************************/
@@ -12176,301 +12153,6 @@ function _default(config) {
   });
 }
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
-
-/***/ }),
-/* 73 */,
-/* 74 */,
-/* 75 */,
-/* 76 */,
-/* 77 */,
-/* 78 */,
-/* 79 */,
-/* 80 */,
-/* 81 */,
-/* 82 */,
-/* 83 */,
-/* 84 */,
-/* 85 */,
-/* 86 */,
-/* 87 */,
-/* 88 */
-/*!*************************************************************************************!*\
-  !*** /Users/juliettewang/Downloads/iCode/Vue/demo/wechat-scaffold/utils/filters.js ***!
-  \*************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.filterWeight = exports.filterNum_str = exports.filterNum = exports.filterName = exports.filterKilobitSplit = exports.filterFloat = exports.filterDefault = void 0;
-/**
-   文件描述：过滤工具类
-   创建人：段素栋
-   创建时间：2021-03-18
- */
-
-/**
-    过滤字符前面的0
-    @param {String} val 待过滤的字符串
-    @return {String} 过滤后的字符串
-*/
-var filterPre0 = function filterPre0(val) {
-  var valList = val.split('.');
-  valList[0] = valList[0].replace(/\b(0+)/gi, "");
-  return valList.join('.');
-};
-
-/**
-    过滤姓名
-    @param {String} name 待过滤的字符串
-    @return {String} 过滤后的字符串
-*/
-var filterName = function filterName(name) {
-  return name.replace(/[^A-Za-z0-9\u4e00-\u9fa5\·\•]/g, '');
-};
-
-/**
-   过滤重量
-   @param {String} weight 待过滤的字符串
-   @return {String} 过滤后的字符串
-*/
-exports.filterName = filterName;
-var filterWeight = function filterWeight(weight) {
-  weight = weight.replace(/[^\d\.]/g, ''); //过滤非数字和.
-  weight = weight.replace(".", "$#$").replace(/\./g, "").replace("$#$", "."); //去除多余的.
-  var regStr = '^(\\-)*(\\d+)\\.(\\d).*$';
-  var decimalReg = new RegExp(regStr);
-  weight = weight.replace(decimalReg, '$1$2.$3');
-  if (weight.substring(0, 2) == '00') {
-    weight = '0';
-  } else if (weight.substring(0, 2) != '0.' && weight.substring(0, 2) != '0') {
-    weight = filterPre0(weight); //weight.replace(/\b(0+)/gi, "")
-  }
-
-  return weight;
-};
-
-/**
-   过滤数字
-   @param {String} num 待过滤的数字
-   @return {Number} 过滤后的数字
-*/
-exports.filterWeight = filterWeight;
-var filterNum = function filterNum(num) {
-  num = num.replace(/[^\d]/g, ''); //过滤非数字
-  return num === '' ? '' : Number(num);
-};
-
-/**
-   过滤浮点数
-   @param {String} num 待过滤的数字
-   @param {Number} decimalLen 过滤的小数位
-   @return {Number} 过滤后的数字
-*/
-exports.filterNum = filterNum;
-var filterFloat = function filterFloat(str) {
-  var decimalLen = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2;
-  var result = str.toString().replace(/[^\d\.]/g, ''); //过滤非数字和.
-  result = result.replace(".", "$#$").replace(/\./g, "").replace("$#$", "."); //去除多余的.
-  var regStr = '^(\\-)*(\\d+)\\.(';
-  for (var i = 0; i < decimalLen; i++) {
-    regStr += '\\d';
-  }
-  regStr += ').*$';
-  var decimalReg = new RegExp(regStr);
-  return result.replace(decimalReg, '$1$2.$3'); //小数点后最多decimalLen位
-};
-
-/**
-   过滤字符串数字
-   @param {String} str 待过滤的数字
-   @return {String} 过滤后的数字
-*/
-exports.filterFloat = filterFloat;
-var filterNum_str = function filterNum_str(str) {
-  return str.replace(/[^\d]/g, '');
-};
-
-/**
-   过滤默认字符 空格及emoji表情
-   @param {String} str 待过滤的字符串
-   @return {String} 过滤后的字符串
-*/
-exports.filterNum_str = filterNum_str;
-var filterDefault = function filterDefault(str) {
-  return str.replace(/ /g, '').replace(/(\ud83c[\udc00-\udfff])|(\ud83d[\udc00-\udfff])|(\ud83e[\udc00-\udfff])|[\u2100-\u32ff]|[\u0030-\u007f][\u20d0-\u20ff]|[\u0080-\u00ff]/g, '');
-};
-
-/**
-   过滤千位分割数字
-   @param {String} param 待过滤的数字
-   @return {String} 过滤后的数字
-*/
-exports.filterDefault = filterDefault;
-var filterKilobitSplit = function filterKilobitSplit(param) {
-  var num = param + '';
-  var numGroup = num.includes('.') ? num.split('.') : [num];
-  var intFn = function intFn(numStr) {
-    return numStr.split('').reverse().reduce(function (prev, next, index) {
-      return (index % 3 ? next : next + ',') + prev;
-    });
-  };
-  var intNum = intFn(numGroup[0]);
-  var floatNum = numGroup[1] ? '.' + numGroup[1] : '';
-  return intNum + floatNum;
-};
-exports.filterKilobitSplit = filterKilobitSplit;
-
-/***/ }),
-/* 89 */,
-/* 90 */,
-/* 91 */,
-/* 92 */,
-/* 93 */,
-/* 94 */,
-/* 95 */,
-/* 96 */
-/*!************************************************************************************!*\
-  !*** /Users/juliettewang/Downloads/iCode/Vue/demo/wechat-scaffold/utils/common.js ***!
-  \************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.debounce = debounce;
-exports.throttleFnc = exports.isEmpty = exports.getLinkQuery = void 0;
-function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-/**
- * @author sudong.duan
- * Date: 21-12-16
- * desc: 公共方法
- */
-
-/**
- *判断是否为空
- *@param {String}a 变量
- *@return 是否为空
- */
-var isEmpty = function isEmpty(a) {
-  if (a === undefined || a === 'undefined' || a === null || a === 'null' || a === '' || JSON.stringify(a) === '{}' || JSON.stringify(a) === '[]') {
-    return true;
-  }
-  return false;
-};
-
-/**
- 节流函数
- @param {Function} callback 回调函数
- @return
- */
-exports.isEmpty = isEmpty;
-var throttleFnc = function throttleFnc(callback) {
-  var isLimit = false;
-  return function () {
-    if (!isLimit) {
-      isLimit = true;
-      callback.call.apply(callback, [this, function () {
-        isLimit = false;
-      }].concat(Array.prototype.slice.call(arguments)));
-    }
-  };
-};
-
-/**
- * @desc 函数防抖
- * @param func 目标函数
- * @param wait 延迟执行毫秒数
- * @param immediate true - 立即执行， false - 延迟执行
- @return
- */
-exports.throttleFnc = throttleFnc;
-function debounce(func, wait, immediate) {
-  var timer;
-  return function () {
-    var context = this,
-      args = arguments;
-    if (timer) clearTimeout(timer);
-    if (immediate) {
-      var callNow = !timer;
-      timer = setTimeout(function () {
-        timer = null;
-      }, wait);
-      if (callNow) func.apply(context, args);
-    } else {
-      timer = setTimeout(function () {
-        func.apply(context, args);
-      }, wait);
-    }
-  };
-}
-
-/**
-	获取链接参数
-	@param {String} link 链接
-	@return {String} 链接后参数数据
-*/
-var getLinkQuery = function getLinkQuery(link) {
-  var queryString = link.split('?')[1];
-  if (queryString) {
-    var queryData = {};
-    queryString = queryString.split('&');
-    var _iterator = _createForOfIteratorHelper(queryString),
-      _step;
-    try {
-      for (_iterator.s(); !(_step = _iterator.n()).done;) {
-        var item = _step.value;
-        item = item.split('=');
-        queryData[item[0]] = item[1];
-      }
-    } catch (err) {
-      _iterator.e(err);
-    } finally {
-      _iterator.f();
-    }
-    return queryData;
-  } else {
-    return {};
-  }
-};
-exports.getLinkQuery = getLinkQuery;
-
-/***/ }),
-/* 97 */,
-/* 98 */,
-/* 99 */,
-/* 100 */,
-/* 101 */,
-/* 102 */,
-/* 103 */,
-/* 104 */
-/*!**********************************************************************************************************!*\
-  !*** /Users/juliettewang/Downloads/iCode/Vue/demo/wechat-scaffold/components/images/fc-select/right.png ***!
-  \**********************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAVCAMAAACqsJS4AAAAYFBMVEUAAADGxsbT09PFxcXGxsbGxsbGxsbGxsbGxsbExMTGxsbGxsbGxsbFxcXFxcXFxcXExMTGxsbGxsbJycnGxsbJycnOzs7GxsbGxsbFxcXDw8PFxcXDw8PPz8/MzMzFxcVqsNVnAAAAH3RSTlMA8Qf49QXnsKeROyn6npiHfkQzIRgVDd7VonduZhAPqN4hqAAAAG5JREFUGNNVz0kOgzAUA9CQMgTCDG2Zff9b4gWJhVf/SV+WbIxtDqM41Ls01MAmVh+gF0eyEz1ZZpET2YpzAqw28psD7s1CVSWQRvTEENARld6QjM+dtYQPaIjpgXXEHFAA+RkKiP+leenyM4oXbkbtB2BajijJAAAAAElFTkSuQmCC"
-
-/***/ }),
-/* 105 */
-/*!*********************************************************************************************************!*\
-  !*** /Users/juliettewang/Downloads/iCode/Vue/demo/wechat-scaffold/components/images/fc-select/down.png ***!
-  \*********************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAXCAMAAAA8w5+RAAAAQlBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACO4fbyAAAAFnRSTlMA2QXUyzbAqJdxFbOGgVhKMiUbDbew+tdJYAAAAGpJREFUGNPNjVcOgDAMQ5s2ZXQPuP9VIR2KBN9IvJ8ktmKLP6LxlHxJi5qmB8eiA9/NA+LUItjxlhWavhVUefoB1ubLFQInbbDT2GETTF3U3anVYlhrdzXkMP2TMpjRQW0PDGIRL1ISX3IB+mgCPFB1dFMAAAAASUVORK5CYII="
 
 /***/ })
 ]]);

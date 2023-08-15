@@ -4,7 +4,13 @@
 		},
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 	{
-		"path": "pages/main/portal",
+		"path": "pages/tabBar/mine/index",
+		"style": {
+			"navigationBarTitleText": "uni-app"
+		}
+	},
+	{
+		"path": "pages/tabBar/order/list/index",
 		"style": {
 			"navigationBarTitleText": "uni-app"
 		}
@@ -23,5 +29,11 @@
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
 	},
+	"tabBar": {
+			"list": [
+				{ "pagePath": "pages/tabBar/mine/index" },
+				{ "pagePath": "pages/tabBar/order/list/index" }
+			]
+		},
 	"uniIdRouter": {}
 }

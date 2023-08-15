@@ -1,6 +1,7 @@
 {
   "pages": [
-    "pages/main/portal",
+    "pages/tabBar/mine/index",
+    "pages/tabBar/order/list/index",
     "pages/index/index"
   ],
   "subPackages": [],
@@ -9,6 +10,16 @@
     "navigationBarTitleText": "uni-app",
     "navigationBarBackgroundColor": "#F8F8F8",
     "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/tabBar/mine/index"
+      },
+      {
+        "pagePath": "pages/tabBar/order/list/index"
+      }
+    ]
   },
   "usingComponents": {}
 }

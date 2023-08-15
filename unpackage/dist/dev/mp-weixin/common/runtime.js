@@ -105,11 +105,11 @@
 /******/
 /******/
 /******/ 		// mini-css-extract-plugin CSS loading
-/******/ 		var cssChunks = {"components/fc-form-item/fc-form-item":1,"components/fc-address/fc-address":1,"components/fc-input/fc-input":1,"components/fc-select/fc-select":1,"components/fc-textarea/fc-textarea":1,"node-modules/uview-ui/components/u-select/u-select":1,"node-modules/uview-ui/components/u-popup/u-popup":1,"node-modules/uview-ui/components/u-icon/u-icon":1,"node-modules/uview-ui/components/u-mask/u-mask":1};
+/******/ 		var cssChunks = {"node-modules/uview-ui/components/u-tabbar/u-tabbar":1,"node-modules/uview-ui/components/u-badge/u-badge":1,"node-modules/uview-ui/components/u-icon/u-icon":1};
 /******/ 		if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
 /******/ 		else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
 /******/ 			promises.push(installedCssChunks[chunkId] = new Promise(function(resolve, reject) {
-/******/ 				var href = "" + ({"components/fc-form/fc-form":"components/fc-form/fc-form","components/fc-form-item/fc-form-item":"components/fc-form-item/fc-form-item","components/fc-address/fc-address":"components/fc-address/fc-address","components/fc-input/fc-input":"components/fc-input/fc-input","components/fc-select/fc-select":"components/fc-select/fc-select","components/fc-textarea/fc-textarea":"components/fc-textarea/fc-textarea","node-modules/uview-ui/components/u-select/u-select":"node-modules/uview-ui/components/u-select/u-select","node-modules/uview-ui/components/u-popup/u-popup":"node-modules/uview-ui/components/u-popup/u-popup","node-modules/uview-ui/components/u-icon/u-icon":"node-modules/uview-ui/components/u-icon/u-icon","node-modules/uview-ui/components/u-mask/u-mask":"node-modules/uview-ui/components/u-mask/u-mask"}[chunkId]||chunkId) + ".wxss";
+/******/ 				var href = "" + ({"components/fc-tabbar/fc-tabbar":"components/fc-tabbar/fc-tabbar","node-modules/uview-ui/components/u-tabbar/u-tabbar":"node-modules/uview-ui/components/u-tabbar/u-tabbar","node-modules/uview-ui/components/u-badge/u-badge":"node-modules/uview-ui/components/u-badge/u-badge","node-modules/uview-ui/components/u-icon/u-icon":"node-modules/uview-ui/components/u-icon/u-icon"}[chunkId]||chunkId) + ".wxss";
 /******/ 				var fullhref = __webpack_require__.p + href;
 /******/ 				var existingLinkTags = document.getElementsByTagName("link");
 /******/ 				for(var i = 0; i < existingLinkTags.length; i++) {

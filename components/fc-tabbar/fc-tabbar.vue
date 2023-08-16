@@ -19,20 +19,20 @@
 		data() {
 			return {
 				tabbarList: [
-					{
-						pagePath: "/pages/tabBar/home/index",
-						iconPath: "/static/tabbar/home.png",
-						selectedIconPath: "/static/tabbar/homeSelect.png",
-						customIcon: false,
-						text: "主页"
-					},
-					{
-						pagePath: "/pages/tabBar/stock/index",
-						iconPath: "/static/tabbar/stock.png",
-						selectedIconPath: "/static/tabbar/stockSelect.png",
-						customIcon: false,
-						text: "库存"
-					},
+					// {
+					// 	pagePath: "/pages/tabBar/home/index",
+					// 	iconPath: "/static/tabbar/home.png",
+					// 	selectedIconPath: "/static/tabbar/homeSelect.png",
+					// 	customIcon: false,
+					// 	text: "主页"
+					// },
+					// {
+					// 	pagePath: "/pages/tabBar/stock/index",
+					// 	iconPath: "/static/tabbar/stock.png",
+					// 	selectedIconPath: "/static/tabbar/stockSelect.png",
+					// 	customIcon: false,
+					// 	text: "库存"
+					// },
 					{
 						pagePath: "/pages/tabBar/order/list/index",
 						iconPath: "/static/tabbar/order.png",

@@ -1,35 +1,52 @@
 <template>
-	<view class="">
-		<view class="list">
-			<view class="">
-				列表
+	<fc-page hasTabbar class="list">
+		<view class="list-content">
+			<view class="panel" v-for='(item,$index) in list'>
+				{{$index}}--{{item.id}}--{{item.name}}
 			</view>
 		</view>
-		<fc-tabbar/>
-	</view>
+	</fc-page>
 </template>
 
 <script>
 	import service from '@/service/index.js';
 	export default {
-		name: 'mine',
+		name: 'list',
 		components: {},
 		data() {
-			return {}
+			return {
+				list:[],
+			}
 		},
 		computed: {},
 		watch: {},
 		mounted() {},
-		onLoad() {},
-		methods: {}
+		onLoad() {
+			this.query();
+		},
+		methods: {
+			query(){
+				const {queryOrder}=service.order;
+				queryOrder().then(res=>{
+					const {code,data}=res;
+					if(code===200){
+						this.list=data;
+					}
+				}).catch(e=>{
+					console.log(e)
+				})
+			},
+		}
 	}
 </script>
 
 <style lang="scss" scoped>
 	.list {
 		background: $background-color;
-		// height: 100vh;
-		// min-height: calc(100vh - env(safe-area-inset-bottom) - 50px);
-		// min-height: calc(100vh - constant(safe-area-inset-bottom) - 50px);
+		.panel{
+			padding: 40rpx;
+			background: #fff;
+			
+		}
 	}
 </style>

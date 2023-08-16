@@ -1,12 +1,12 @@
 <template>
-	<view class="">
+	<fc-page hasTabbar>
 		<view class="mine">
-			<view class="">
-				我的
+			<view class="content">我的</view>
+			<view class="footer">
+				<button type="default">退出登录</button>
 			</view>
 		</view>
-		<fc-tabbar/>
-	</view>
+	</fc-page>
 </template>
 
 <script>
@@ -27,6 +27,21 @@
 
 <style lang="scss" scoped>
 	.mine {
-		background: #f00;
+		height: 100%;
+        background-color: $background-color;
+		.footer {
+			width: 100%;
+			position: absolute;
+			bottom:calc(constant(safe-area-inset-bottom) + 100rpx);
+			bottom:calc(env(safe-area-inset-bottom) + 100rpx);
+			padding: 32rpx;
+			// background-color: $background-color;
+			button {
+				border-radius: 0;
+				border: none;
+				background-color: $primary-color;
+				color: #fff;
+			}
+		}
 	}
 </style>
